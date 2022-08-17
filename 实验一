@@ -1,0 +1,148 @@
+\# 2022年夏季《移动软件开发》实验报告
+
+
+
+<center>姓名：杨帅与 学号：20170001085</center>
+
+| 姓名和学号？         | 杨帅宇，20170001085              |
+| -------------------- | -------------------------------- |
+| 本实验属于哪门课程？ | 中国海洋大学22夏《移动软件开发》 |
+| 实验名称？           | 实验1：第一个微信小程序          |
+| 博客地址？           | XXXXXXX                          |
+| Github仓库地址？     | XXXXXXX                          |
+
+
+
+
+
+\## **一、实验目标**
+
+1、学习使用快速启动模板创建小程序的方法；2、学习不使用模板手动创建小程序的方法。
+
+
+
+\## 二、实验步骤
+
+**###app.json:**
+
+{
+
+ "pages":[
+
+  "pages/index/index"
+
+ ],
+
+ "window":{
+
+  "navigationBarBackgroundColor": "#663399",
+
+  "navigationBarTitleText": "手动创建",
+
+  "navigationBarTextStyle":"white"
+
+ }
+
+}
+
+![image-20220817114854275](C:\Users\31833\AppData\Roaming\Typora\typora-user-images\image-20220817114854275.png)
+
+如图，使导航栏背景为紫色，字体为白色。
+
+**###index.js:**
+
+Page({
+
+ /**
+
+  \* 页面的初始数据
+
+  */
+
+ data: {
+
+  src: '/images/logo.png',
+
+  name: 'Hello World'
+
+ },
+
+ /**
+
+  \* 自定义函数--获取用户信息
+
+  */
+
+ getMyInfo: function(e){
+
+   let info = e.detail.userInfo;
+
+   this.setData({
+
+​     src:info.avatarUrl,
+
+​     name:info.nickName
+
+   })
+
+ },
+
+})
+
+**###index.wxml:**
+
+<view class ='container'>
+  <image src ='{{src}}'mode='widthFix'></image>
+  <text>{{name}}</text>
+  <button open - type ='getUserInfo' bindgetuserinfo="getMyInfo">
+      点击获得昵称
+  </button>
+</view>
+
+**###index.wxss:**
+
+.container{
+
+  height:100vh;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:space-around;
+
+}
+
+image{
+
+  width: 300rpx;
+
+  border-radius: 50%;
+
+}
+
+text{
+
+  font-size: 50rpx;
+
+}
+
+![image-20220817115131521](C:\Users\31833\AppData\Roaming\Typora\typora-user-images\image-20220817115131521.png)
+
+如图，为页面的布局，设置了图片形状、宽度，以及字体的大小。
+
+
+
+\## 三、程序运行结果
+
+运行结果截图：
+
+![image-20220817113328056](C:\Users\31833\AppData\Roaming\Typora\typora-user-images\image-20220817113328056.png)
+
+
+
+\## 四、问题总结与体会
+
+无法获得头像，必须使用本地图片才能显示。
